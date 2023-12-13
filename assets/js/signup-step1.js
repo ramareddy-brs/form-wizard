@@ -294,10 +294,8 @@ var cities = ["Hyderabad", "Bengalore", "kakinada", "Rajahmundry", "Chennai"];
     function validateForm() {
       var address = document.getElementById('address').value;
       var city = document.getElementById('city').value;
-
-      if (address.trim() === '' || city === '') {
-        alert('Please fill in all fields.');
-      } else {
-        alert('Form submitted successfully!\nAddress: ' + address + '\nCity: ' + city);
-      }
+        if(address == ''){
+          alert("Fill the required field");
+        }
     }
+    validateForm();
