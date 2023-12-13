@@ -276,3 +276,28 @@ function toggle() {
     return true
   }
 }
+var cities = ["Hyderabad", "Bengalore", "kakinada", "Rajahmundry", "Chennai"];
+
+    function populateCities() {
+      var citySelect = document.getElementById('city');
+      for (var i = 0; i < cities.length; i++) {
+        var option = document.createElement('option');
+        option.value = cities[i];
+        option.text = cities[i];
+        citySelect.add(option);
+      }
+    }
+
+   
+    populateCities();
+
+    function validateForm() {
+      var address = document.getElementById('address').value;
+      var city = document.getElementById('city').value;
+
+      if (address.trim() === '' || city === '') {
+        alert('Please fill in all fields.');
+      } else {
+        alert('Form submitted successfully!\nAddress: ' + address + '\nCity: ' + city);
+      }
+    }

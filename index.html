@@ -22,7 +22,7 @@
     </div>
   </header>
 
-   <main role="main text-center" style="height: 740px;">
+   <main role="main text-center" style="height: auto;">
     <div class="wrapper h-100">
       <div class="Grid Grid--full Grid--center" >
         <div class="Grid-cell h-80 OuterFormBlock"  style="background-color:aliceblue;">
@@ -69,6 +69,12 @@
                           autocomplete = "off"
                         />
                       </div>
+                      <label for="address">Address:</label>
+                      <textarea id="address" name="address" rows="4" cols="40"></textarea>
+                      <label for="city">City/Town:</label>
+                      <select id="city" name="city">
+                       <option value="" disabled selected>Select a city</option>
+                      </select>
                       <div class="radioGroup">
                         <label>Gender</label>
                         <div class="radioGroup">
