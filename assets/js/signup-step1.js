@@ -33,13 +33,20 @@ window.onload = function () {
 
       }
     }
-    else if(root[elementNumber].type=="submit")
-    {
+    if (root[elementNumber].type == 'textarea') {
+      root[elementNumber].onfocus = function () {
+        myFocus(this)
+      }
+      root[elementNumber].onkeyup = function () {
+        textarea(this)
+      }
+    } else if(root[elementNumber].type=="submit")
+     {
        root[elementNumber].onclick = function()
        {
         return validation(root);
        }
-    }
+     }
   }
 }
 
@@ -102,6 +109,41 @@ function email(emailValid) {
     }
   }
 }
+function textarea(textareaValid) {
+  let type = textareaValid.getAttribute('name');
+  let show = textareaValid.name + 'error';
+
+  if (type == 'address') {
+      let textareaValue = textareaValid.value.trim();
+      if (textareaValue.length === 0) {
+          document.getElementById(show).innerHTML = '&#10008; Message cannot be empty';
+          document.getElementById(show).style.color = 'red';
+          textareaValid.style.border = '1px solid red';
+          return false;
+      } else {
+          document.getElementById(show).style.color = '#1758c1';
+          textareaValid.style.border = '1px solid #1758c1';
+          return true;
+      }
+  }
+}
+var selectElement = document.getElementById('city');
+
+selectElement.addEventListener('change', function () {
+
+  var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+  var selectedValue = selectedOption.value;
+
+  if (selectedValue.trim() === '') {
+    selectElement.style.border = '1px solid red';
+  } else {
+    selectElement.style.border = '1px solid blue';
+  }
+});
+
+
+
 
 let parameters = {
   count: false,
@@ -242,6 +284,18 @@ function validation(form) {
         x[i].focus()
         x[i].style.border="1px solid red";
         return false
+      }
+    } else if (type == 'textarea') {
+      if (x[i].value.length == 0) {
+        x[i].focus();
+        x[i].style.border = '1px solid red';
+        return false;
+      }
+    } else if (type == 'select-one') {
+      if (x[i].value.length == 0) {
+        x[i].focus();
+        x[i].style.border = '1px solid red';
+        return false;
       }
     } else if (type == 'radio') {
       let l = x[i].parentNode.children.length
